@@ -1,11 +1,12 @@
 /*! ========================================================================
- * FilterList: filterlist.js v2.0.0
+ * FilterList: filterlist.js v1.1.0
  * ========================================================================
  * Copyright 2015, Salvatore Di Salvo (disalvo-infographiste[dot]be)
  * ======================================================================== */
 
 (function ($) {
     'use strict';
+
 
     // SELECT FILTER PUBLIC CLASS DEFINITION
     // ====================================
@@ -16,7 +17,7 @@
         this.structure = $.extend({}, this.parts())
     }
 
-    FilterList.VERSION  = '1.1.0'
+    FilterList.VERSION  = '1.2.0'
 
     FilterList.DEFAULTS = {
         method : 'recursive',
@@ -76,8 +77,8 @@
                             valid = valid.concat([val]);
                         }
                     } else {
-                        ref.splice(ref.indexOf(section),1);
                         valid.splice(ref.indexOf(section),1);
+                        ref.splice(ref.indexOf(section),1);
                     }
                 }
             } else if (val != null && val != '') {
@@ -101,7 +102,12 @@
                 }
             }
 
-            $(this).data('ref',ref.toString()).data('valid',valid.toString());
+            if (ref.length > 0) {
+                $(this).data('ref',ref.toString()).data('valid',valid.toString());
+            } else {
+                $(this).removeData('ref').removeData('valid');
+            }
+
             if ( !skip ) {
                 $(this).addClass('disabled').hide();
             } else {
