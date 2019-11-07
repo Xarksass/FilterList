@@ -1,6 +1,6 @@
-# LiveFilter
+# FilterList
 ## Description
-A jQuery plugin which provide to filter a list based on a value passed (for exemple when choosing an option in a select).
+FilterList allows you to filter a list based on a value passed (for exemple when choosing an option in a select).
 
 Very useful to reduce the number of options in select list or simply filtering it based on option.
 
@@ -9,7 +9,7 @@ Two methods of filtering :
 * Additionnal : all items that are valid for at least one filter will be shown.
 
 ## Requirements
-No requirements except jQuery.
+No requirements except some polyfill like modernizr.
 
 ## Basic usage
 This is the basic html structure needed to use this plugin
@@ -42,11 +42,12 @@ Exemple of list to be filtered
 
 Exemple of initialisation of the plugin
 ``` javascript
-$(function(){
-    $('#toFilter').listFilter();
-
-    $('#exemple').change(function(){
-        $('#toFilter').listFilter( 'filter', $(this).attr('id'), $(this).val());
+window.addEventListener('load',function(){
+    let toFilter = document.getElementById('toFilter');
+    new filterList(toFilter,{});
+    let exemple = document.getElementById('exemple');
+    exemple.addEventListener('change',function(){
+        toFilter.filterList.filter(exemple.getAttribute('id'),exemple.value);
     });
 });
 ```

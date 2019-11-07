@@ -24,17 +24,9 @@
 // Place any jQuery/helper plugins in here.
 window.addEventListener('load',function(){
     let toFilter = document.getElementById('toFilter');
-    let filter = new filterList(toFilter,{});
+    new filterList(toFilter,{});
     let exemple = document.getElementById('exemple');
     exemple.addEventListener('change',function(){
         toFilter.filterList.filter(exemple.getAttribute('id'),exemple.value);
     });
-
 });
-/*$(function(){
-    $('#toFilter').listFilter();
-
-    $('#exemple').change(function(){
-        $('#toFilter').listFilter( 'filter', $(this).attr('id'), $(this).val());
-    });
-});*/
