@@ -67,7 +67,7 @@ class filterList {
 
         this.filterItem( section, val, this.options.method );
         $select.querySelectorAll('.live-filtering').forEach(function(lf){
-            if(lf.liveFilter instanceof liveFilter) lf.livefilter.initAC();
+            if(lf.liveFilter instanceof liveFilter) lf.liveFilter.initAC();
         });
     }
 
